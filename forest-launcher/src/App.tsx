@@ -12,7 +12,7 @@ function App() {
                         Click to launch the lab
                     </h2>
                     <p style={{margin: '20px'}}>
-                        <a href="https://mybinder.org/v2/gh/sajanssens/generics-notebook/HEAD?labpath=Generics.ipynb"><img
+                        <a href="https://mybinder.org/v2/gh/sajanssens/generics-notebook/HEAD?urlpath=notebooks/Generics.ipynb"><img
                             src={logo}/> </a>
                     </p>
                     <p>JFall 2026</p>
