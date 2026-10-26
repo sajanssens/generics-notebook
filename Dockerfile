@@ -13,3 +13,9 @@ RUN curl -fL https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava
  && unzip /tmp/ijava.zip -d /tmp/ijava \
  && python /tmp/ijava/install.py --sys-prefix \
  && rm -rf /tmp/ijava /tmp/ijava.zip
+
+# Unlike repo2docker's default build, a custom Dockerfile build does NOT
+# automatically copy the repository contents into the image, so we must
+# do it explicitly and hand ownership to the notebook user.
+WORKDIR ${HOME}
+COPY --chown=${NB_UID}:${NB_GID} . ${HOME}
