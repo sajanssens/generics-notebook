@@ -1,6 +1,6 @@
 # Java Notebook on Binder
 
-Click to launch:
+	Click to launch:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sajanssens/generics-notebook/HEAD?labpath=Generics.ipynb)
 

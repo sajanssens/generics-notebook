@@ -54,7 +54,7 @@ public class Generics {
         // }
 
         if (!box.isFull()) {
-            box.add(new Chocolate()); //✅
+            box.add(new Chocolate()); // ✅
         }
     }
 
