@@ -14,7 +14,7 @@ function App() {
     return (
         <>
             <section id="center">
-                <div onClick={launch} style={{cursor: 'pointer'}}>
+                <div className="launch-card" onClick={launch}>
                     <h1>Generics</h1>
                     <h2>Launch the lab 🚀</h2>
                     <p>JFall 2026 🍁</p>
