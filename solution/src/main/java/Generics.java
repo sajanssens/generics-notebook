@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static java.lang.IO.println;
 
@@ -10,7 +9,7 @@ public class Generics {
         Box<Chocolate> chocolates = new Box<>();
 
         inspect(candies);       // ✅
-        // inspect(chocolates); // ❌
+        // inspect(chocolates); // ❌ 😢
         println(candies.isFull());    // true
         println(chocolates.isFull()); // false 💔
 
@@ -30,31 +29,27 @@ public class Generics {
     }
 
     void inspect(Box<Candy> box) {
-        for (Candy c : box.getValues()) {
-            if (c.isStale()) throw new RuntimeException("I'm not a fool! Try again...");
-        }
+        for (Candy c : box.getValues()) { c.validate(); }
+
         if (!box.isFull()) {
-            box.add(new Chocolate());
+            box.add(new Gummybear()); // leads to heartbreak...
         }
     }
 
     void inspectCo(Box<? extends Candy> box) {
-        for (Candy c : box.getValues()) {
-            if (c.isStale()) throw new RuntimeException("I'm not a fool! Try again...");
-        }
+        for (Candy c : box.getValues()) { c.validate(); }
 
         if (!box.isFull()) {
-            // box.add(new Chocolate()); // ❌ box is a consumer only
+            // box.add(new Gummybear()); // ❌ box is a consumer only, ✅ heartbreak deflected 💪🏻
         }
     }
 
     void inspectContra(Box<? super Chocolate> box) {
-        // for (Candy c : box.getValues()) { // ❌ box is a producer
-        //
-        // }
+        // for (Candy c : box.getValues()) { c.validate(); } // ❌ box is a producer
 
         if (!box.isFull()) {
-            box.add(new Chocolate()); // ✅
+            // box.add(new Gummybear()); // ❌ not allowed in this type of Box ✅ heartbreak deflected 💪🏻
+            box.add(new Chocolate());    // ✅ love secured ❤️
         }
     }
 
@@ -65,13 +60,17 @@ public class Generics {
     }
 }
 
-class Candy {
-    public static final int FRESH_FACTOR = 6;
-
-    public boolean isStale() { return new Random().nextInt(FRESH_FACTOR) % FRESH_FACTOR == 0; }
+abstract class Candy {
+    abstract void validate();
 }
 
-class Chocolate extends Candy { }
+class Chocolate extends Candy {
+    @Override void validate() { /* Chocolate is OK */ }
+}
+
+class Gummybear extends Candy {
+    @Override void validate() { throw new RuntimeException("🤮"); }
+}
 
 class Box<T> {
     private final List<T> values = new ArrayList<>();
