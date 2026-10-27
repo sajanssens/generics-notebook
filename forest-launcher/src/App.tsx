@@ -1,24 +1,25 @@
 import './App.css'
 
 function App() {
-    const logo = "https://mybinder.org/badge_logo.svg"
+
+    function launch(event: React.MouseEvent<HTMLDivElement>) {
+        if ((event.target as HTMLElement).closest('a')) return
+        window.open(
+            "https://mybinder.org/v2/gh/sajanssens/generics-notebook/HEAD?urlpath=notebooks/Generics.ipynb",
+            "_blank",
+            "noopener,noreferrer"
+        )
+    }
+
     return (
         <>
             <section id="center">
-
-                <div>
+                <div onClick={launch} style={{cursor: 'pointer'}}>
                     <h1>Generics</h1>
-                    <h2>
-                        Click to launch the lab
-                    </h2>
-                    <p style={{margin: '20px'}}>
-                        <a href="https://mybinder.org/v2/gh/sajanssens/generics-notebook/HEAD?urlpath=notebooks/Generics.ipynb"><img
-                            src={logo}/> </a>
-                    </p>
-                    <p>JFall 2026</p>
+                    <h2>Launch the lab 🚀</h2>
+                    <p>JFall 2026 🍁</p>
                 </div>
             </section>
-
             <div><a href="https://bramjanssens.nl">bramjanssens.nl</a></div>
             <div><a href="https://infosupport.com">infosupport.com</a></div>
         </>
