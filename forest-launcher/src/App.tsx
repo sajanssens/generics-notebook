@@ -16,7 +16,7 @@ function App() {
             <section id="center">
                 <div className="launch-card" onClick={launch}>
                     <h1>Generics</h1>
-                    <h2>Launch the lab 🚀</h2>
+                    <h2>Click to launch the lab 🚀</h2>
                     <p>JFall 2026 🍁</p>
                 </div>
             </section>
